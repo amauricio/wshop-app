@@ -57,6 +57,7 @@ jobs:
           .
     # Push the Docker image to Google Container Registry
     - name: Tag image
+      run: |-
         docker tag $IMAGE "gcr.io/$PROJECT_ID/$IMAGE"
     - name: Publish image
       run: |-
