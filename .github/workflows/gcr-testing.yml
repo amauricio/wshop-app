@@ -32,7 +32,6 @@ jobs:
         
     - run: |-
        cp entrypoints/testing.sh start.sh && \
-       echo ${{ secrets.GCP_SERVICE_ACCOUNT }} && \
        cp .env.sample .env
         
     
