@@ -53,7 +53,12 @@ app.use(function (data, req, res, next) {
 app.use(
   '/api-docs',
   swaggerUi.serve,
-  swaggerUi.setup(controllers.apiDoc, {}),
+  swaggerUi.setup(controllers.apiDoc, {
+    customCss: `
+    .swagger-ui .topbar { display: none }
+    /*.swagger-ui .topbar .wrapper .topbar-wrapper a img { display: none }*/
+`,
+  }),
 );
 app.use(function (req, res, next) {
   res.json({"NOT_FOUND":1});
