@@ -55,15 +55,11 @@ jobs:
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
           .
-    - name: auth docker
-      run: |-
-        gcloud docker --authorize-only
-
     # Push the Docker image to Google Container Registry
     - name: Publish image
       run: |-
-        
-        docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
+        gcloud docker — push gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA
+    # docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
