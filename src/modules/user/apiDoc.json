@@ -1,0 +1,47 @@
+{
+    "paths": {
+      "/user/profile": {
+        "get": {
+          "tags": ["user"],
+          "summary": "User collection.",
+          "description": "get response user profile",
+          "operationId": "user-profile",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            },
+            "400": {
+              "description": "Error: Bad Request"
+            },
+            "403": {
+              "description": "Error: Forbidden"
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]
+        }
+      }
+    },
+    "definitions": {
+      "getProfile": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "required": true,
+            "example": "1000144",
+            "description": "User ID"
+          }
+        }
+      }
+    }
+  }
+  

@@ -17,6 +17,7 @@ global.appRootPath = require.main.path;
 const app = express();
 const routesV1 = require('modules');
 const commonMiddlewares = require('common/middlewares');
+const commonModels = require('common/models/pg');
 
 
 app.use(methodOverride());
@@ -29,7 +30,7 @@ app.use(
 );
 app.use(cors());
 app.use(morgan('tiny'));
-const controllers = routesV1({ commonMiddlewares });
+const controllers = routesV1({ commonMiddlewares, commonModels });
 
 app.use('', commonMiddlewares.debugRoute, controllers.router);
 

@@ -10,6 +10,11 @@ const errors = {
         code : 102,
         message : "Error al validar los campos."
     },
+    "LOGIN_FAILED" : {
+        status: 401,
+        code : 106,
+        message : "Access not valid."
+    },
     "INVALID_APIPKEY" : {
         status: 500,
         code : 103,

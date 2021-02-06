@@ -1,12 +1,19 @@
 
+const tokenValidation = require('common/middlewares/tokenValidation');
 const validator = require('modules/user/profile/validator');
 const mock = require("modules/user/profile/mock.json");
-const getProfile = (dependencies, stage) => async (req, res, next) => {
+const _getProfile = (dependencies, stage) => async (req, res, next) => {
     next(mock)
 }
 
-module.exports = (dependencies) => [
+exports.getProfile = (dependencies) =>[
+    tokenValidation(dependencies, "validate"),
     validator(dependencies, "validate"),
-    getProfile(dependencies, "get-profile")
+    _getProfile(dependencies, "get-profile")
+];
+exports.createProfile = (dependencies) =>[
+    tokenValidation(dependencies, "validate"),
+    validator(dependencies, "validate"),
+    _getProfile(dependencies, "get-profile")
 ];
   

@@ -1,5 +1,5 @@
 
-const profile = require("modules/user/profile");
+const { getProfile } = require("modules/user/profile");
 
 module.exports = (dependencies) => {
     return {
@@ -7,7 +7,7 @@ module.exports = (dependencies) => {
         {
           method: 'get',
           path: '/profile',
-          ctrlMiddleware: profile(dependencies),
+          ctrlMiddleware: getProfile(dependencies),
         }
       ]
     };

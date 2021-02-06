@@ -9,10 +9,10 @@ const apiDoc = {
   swagger: '2.0',
   title: 'wshop API Doc.',
   info: {
-    description: '',
+    description: 'Workshop now api documentation',
     version: '0.0.1',
-    title: 'wshop evaluation Doc.',
-    termsOfService: 'wshop',
+    title: 'Workshopnow Doc.',
+    termsOfService: '',
     contact: {
       email: '',
     },
