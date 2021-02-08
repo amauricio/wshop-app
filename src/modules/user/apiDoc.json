@@ -1,13 +1,120 @@
 {
     "paths": {
-      "/user/profile": {
+        
+      "/user/hasProfile": {
         "get": {
           "tags": ["user"],
-          "summary": "User collection.",
+          "summary": "check if user has profile.",
+          "description": "get response user profile",
+          "operationId": "user-has-profile",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            },
+            "400": {
+              "description": "Error: Bad Request"
+            },
+            "403": {
+              "description": "Error: Forbidden"
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]
+        }
+      },
+      "/user/uploadPicture": {
+        "post": {
+          "tags": ["user"],
+          "summary": "upload picture profile.",
+          "description": "retrieve url picture",
+          "operationId": "upload-picture",
+          "consumes": ["multipart/form-data"],
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "in": "formData",
+              "name": "picture",
+              "description": ".",
+              "required": true,
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            },
+            "400": {
+              "description": "Error: Bad Request"
+            },
+            "403": {
+              "description": "Error: Forbidden"
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]
+        }
+      },
+      "/user/profile": {
+        "post": {
+            "tags": ["user"],
+            "summary": "create user profile.",
+            "description": "create response user profile",
+            "operationId": "user-create-profile",
+            "consumes": ["application/json"],
+            "produces": ["application/json"],
+            "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "Request body.",
+                  "required": true,
+                  "schema": {
+                    "$ref": "#/definitions/createProfile"
+                  }
+                }
+              ],
+            "responses": {
+                "200": {
+                "description": "Successful operation"
+                },
+                "400": {
+                "description": "Error: Bad Request"
+                },
+                "403": {
+                "description": "Error: Forbidden"
+                },
+                "401": {
+                "description": "Unauthorized"
+                }
+            },
+            "security": [
+                {
+                "api_key": []
+                }
+            ]
+            },
+        "get": {
+          "tags": ["user"],
+          "summary": "get user profile.",
           "description": "get response user profile",
           "operationId": "user-profile",
           "consumes": ["application/json"],
           "produces": ["application/json"],
+          
           "responses": {
             "200": {
               "description": "Successful operation"
@@ -31,14 +138,32 @@
       }
     },
     "definitions": {
-      "getProfile": {
+      "createProfile": {
         "type": "object",
         "properties": {
-          "userId": {
+          "names": {
             "type": "string",
             "required": true,
-            "example": "1000144",
-            "description": "User ID"
+            "example": "Mauricio",
+            "description": "Names"
+          },
+          "user": {
+            "type": "string",
+            "required": true,
+            "example": "uaxp",
+            "description": "Username (alias)"
+          },
+          "picture": {
+            "type": "string",
+            "required": true,
+            "example": "http://me.picture",
+            "description": "Picture url"
+          },
+          "phone": {
+            "type": "string",
+            "required": true,
+            "example": "9489282827",
+            "description": "user phone"
           }
         }
       }

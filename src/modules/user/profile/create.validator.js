@@ -3,7 +3,10 @@ const { RestException, errors } = require('modules/rest.exception');
 
 module.exports = (dependencies) => async (req, res, next) => {
   const validator = Joi.object({
-    userId: Joi.string()
+    names: Joi.string().required(),
+    user: Joi.string().required(),
+    picture: Joi.string(),
+    phone: Joi.string(),
   });
 
   const { error, value } = validator.validate(req.body);

@@ -9,6 +9,7 @@ const methodOverride = require('method-override');
 const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
+const multer = require("multer");
 
 const swaggerUi = require('swagger-ui-express');
 
